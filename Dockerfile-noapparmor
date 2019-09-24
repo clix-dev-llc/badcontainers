@@ -1,0 +1,11 @@
+# Created by Adam Iwaniuk
+# https://github.com/opencontainers/runc/issues/2128
+# https://twitter.com/adam_iwaniuk/status/1175741830136291328?s=03
+FROM katacoda/badcontainers:ubuntu-18.04
+# get rid of procfs
+VOLUME /proc
+# fake files to avoid fail on run
+COPY empty /proc/self/attr/exec
+COPY empty /proc/self/fd/4
+COPY empty /proc/self/fd/5
+COPY empty /proc/self/status
